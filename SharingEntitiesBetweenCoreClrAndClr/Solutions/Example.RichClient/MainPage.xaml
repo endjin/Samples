@@ -1,8 +1,0 @@
-﻿<UserControl x:Class="Example.RichClient.MainPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-        <StackPanel HorizontalAlignment="Left" x:Name="LayoutRoot" VerticalAlignment="Top">
-            <TextBlock Height="auto" HorizontalAlignment="Left"  Name="textBlock" VerticalAlignment="Top" />
-            <Button Content="Show Message" Height="auto" HorizontalAlignment="Left" Name="ShowMessageButton" VerticalAlignment="Top" Width="auto" Click="OnShowMessageButtonClick" />
-        </StackPanel>
-</UserControl>
