@@ -1,4 +1,4 @@
-namespace StepByStepGuideToMongoDB.Framework.Infrastructure.Norm
+namespace StepByStepGuideToMongoDB.Infrastructure.Norm
 {
     #region Using Directives
 
@@ -7,7 +7,7 @@ namespace StepByStepGuideToMongoDB.Framework.Infrastructure.Norm
 
     using global::Norm;
 
-    using StepByStepGuideToMongoDB.Contracts.Framework.Infrastructure.Repositories;
+    using StepByStepGuideToMongoDB.Contracts.Infrastructure.Repositories;
 
     #endregion
 

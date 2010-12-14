@@ -34,10 +34,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\ReferencedAssemblies\Castle.Windsor\bin-dotNet40ClientProfile\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\ReferencedAssemblies\Castle.Windsor\bin-dotNet40ClientProfile\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Endjin.Composition">
+      <HintPath>..\..\ReferencedAssemblies\Endjin\Endjin.Composition.dll</HintPath>
+    </Reference>
     <Reference Include="Norm">
       <HintPath>..\..\ReferencedAssemblies\Norm.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
@@ -45,9 +55,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\Framework\Infrastructure\Repositories\IReadOnlyLinqRepository.cs" />
-    <Compile Include="Contracts\Framework\Infrastructure\Repositories\IUniqueIdentifier.cs" />
-    <Compile Include="Contracts\Framework\Infrastructure\Repositories\IWritableLinqRepository.cs" />
+    <Compile Include="Configuration\Installers\FrameworkInstaller.cs" />
+    <Compile Include="Configuration\Installers\InfrastructureInstaller.cs" />
+    <Compile Include="Configuration\Installers\TasksInstaller.cs" />
+    <Compile Include="Contracts\Infrastructure\Repositories\IUniqueIdentifier.cs" />
+    <Compile Include="Contracts\Infrastructure\Repositories\ILinqRepository.cs" />
     <Compile Include="Contracts\Framework\Infrastructure\Specifications\ILinqSpecification.cs" />
     <Compile Include="Contracts\Infrastructure\Repositories\IRemoteClubDataSource.cs" />
     <Compile Include="Contracts\Tasks\IClubTasks.cs" />
@@ -57,9 +69,8 @@
     <Compile Include="Framework\Specifications\QuerySpecification.cs" />
     <Compile Include="Framework\Specifications\QuerySpecificationExtensions.cs" />
     <Compile Include="Infrastructure\DataSources\RemoteClubDataSource.cs" />
-    <Compile Include="Framework\Infrastructure\Repositories\ReadOnlyRepository.cs" />
-    <Compile Include="Framework\Infrastructure\Repositories\ReadWriteRepository.cs" />
-    <Compile Include="Framework\Infrastructure\Norm\Session.cs" />
+    <Compile Include="Infrastructure\Repositories\LinqRepository.cs" />
+    <Compile Include="Infrastructure\Norm\Session.cs" />
     <Compile Include="Infrastructure\Specifications\ByContactNameSpecification.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,9 +80,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configuration\Installers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

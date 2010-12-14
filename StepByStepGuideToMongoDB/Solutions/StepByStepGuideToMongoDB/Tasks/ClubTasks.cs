@@ -5,7 +5,6 @@ namespace StepByStepGuideToMongoDB.Tasks
     using System.Collections.Generic;
     using System.Linq;
 
-    using StepByStepGuideToMongoDB.Contracts.Framework.Infrastructure.Repositories;
     using StepByStepGuideToMongoDB.Contracts.Infrastructure.Repositories;
     using StepByStepGuideToMongoDB.Contracts.Tasks;
     using StepByStepGuideToMongoDB.Domain;
@@ -16,9 +15,9 @@ namespace StepByStepGuideToMongoDB.Tasks
     public class ClubTasks : IClubTasks
     {
         private readonly IRemoteClubDataSource remoteClubDataSource;
-        private readonly IWritableLinqRepository<Club> clubRepository;
+        private readonly ILinqRepository<Club> clubRepository;
 
-        public ClubTasks(IRemoteClubDataSource remoteClubDataSource, IWritableLinqRepository<Club> clubRepository)
+        public ClubTasks(IRemoteClubDataSource remoteClubDataSource, ILinqRepository<Club> clubRepository)
         {
             this.remoteClubDataSource = remoteClubDataSource;
             this.clubRepository = clubRepository;

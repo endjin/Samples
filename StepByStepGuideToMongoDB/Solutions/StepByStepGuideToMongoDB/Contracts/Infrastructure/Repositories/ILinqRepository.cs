@@ -1,4 +1,4 @@
-namespace StepByStepGuideToMongoDB.Contracts.Framework.Infrastructure.Repositories
+namespace StepByStepGuideToMongoDB.Contracts.Infrastructure.Repositories
 {
     #region Using Directives
 
@@ -8,22 +8,9 @@ namespace StepByStepGuideToMongoDB.Contracts.Framework.Infrastructure.Repositori
 
     #endregion
 
-    /// <summary>
-    /// Defines a LINQ implementation of the Repository Pattern that takes in a Specification to define
-    /// the items that should be returned.
-    /// </summary>
-    /// <typeparam name="T">
-    /// Type to be retrieved from readonly store
-    /// </typeparam>
-    public interface IReadOnlyLinqRepository<T>
+    public interface ILinqRepository<T>
     {
-        /// <summary>
-        /// Finds an item by a specification
-        /// </summary>
-        /// <param name="specification">The specification.</param>
-        /// <typeparam name="T">Type of entity to find</typeparam>
-        /// <returns>The the matching item</returns>
-        T FindOne(ILinqSpecification<T> specification);
+        void Delete(T item);
 
         /// <summary>
         /// Finds all items within the repository.
@@ -39,5 +26,17 @@ namespace StepByStepGuideToMongoDB.Contracts.Framework.Infrastructure.Repositori
         /// <typeparam name="T">Type of entity to find</typeparam>
         /// <returns>All matching items</returns>
         IQueryable<T> FindAll(ILinqSpecification<T> specification);
+
+        /// <summary>
+        /// Finds an item by a specification
+        /// </summary>
+        /// <param name="specification">The specification.</param>
+        /// <typeparam name="T">Type of entity to find</typeparam>
+        /// <returns>The the matching item</returns>
+        T FindOne(ILinqSpecification<T> specification);
+
+        void Save(T item);
+
+        void Update(T item);
     }
 }

@@ -1,4 +1,4 @@
-namespace StepByStepGuideToMongoDB.Contracts.Framework.Infrastructure.Repositories
+namespace StepByStepGuideToMongoDB.Contracts.Infrastructure.Repositories
 {
     public interface IUniqueIdentifier
     {

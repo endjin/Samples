@@ -3,10 +3,14 @@
     #region Using Directives
 
     using System;
+    using System.ComponentModel.Composition.Hosting;
+    using System.Web;
+
+    using Endjin.Core.Container;
+    using Endjin.Core.Windsor.Container;
 
     using StepByStepGuideToMongoDB.Contracts.Tasks;
     using StepByStepGuideToMongoDB.Domain;
-    using StepByStepGuideToMongoDB.Framework.Infrastructure.Repositories;
     using StepByStepGuideToMongoDB.Infrastructure.DataSources;
     using StepByStepGuideToMongoDB.Tasks;
 
@@ -16,7 +20,20 @@
     {
         private static void Main(string[] args)
         {
-            IClubTasks clubTasks = new ClubTasks(new RemoteClubDataSource(), new ReadWriteRepository<Club>());
+            Initializer();
+            DoWork();
+        }
+
+        private static void Initializer()
+        {
+            ApplicationServiceLocator.Initialize(
+                new WindsorServiceContainer(), 
+                new MefWindsorBootstrapper(new AssemblyCatalog(typeof(Program).Assembly)));
+        }
+
+        private static void DoWork()
+        {
+            var clubTasks = ApplicationServiceLocator.Container.Resolve<IClubTasks>();
 
             // Retrieve Clubs from the XML Data Fields
             // Using LINQ to XML to generate POCO from the feed

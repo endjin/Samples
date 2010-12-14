@@ -5,7 +5,7 @@
     using System;
     using System.Text;
 
-    using StepByStepGuideToMongoDB.Contracts.Framework.Infrastructure.Repositories;
+    using StepByStepGuideToMongoDB.Contracts.Infrastructure.Repositories;
     using StepByStepGuideToMongoDB.Framework.Extensions;
 
     #endregion
