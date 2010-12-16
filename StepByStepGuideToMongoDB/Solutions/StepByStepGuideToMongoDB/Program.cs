@@ -20,11 +20,11 @@
     {
         private static void Main(string[] args)
         {
-            Initializer();
+            Initialize();
             DoWork();
         }
 
-        private static void Initializer()
+        private static void Initialize()
         {
             ApplicationServiceLocator.Initialize(
                 new WindsorServiceContainer(), 
