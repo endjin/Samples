@@ -9,6 +9,7 @@ Release
 Data
 Drops
 _Resharper.*
+*.DotCover
 *.opensdf
 *.sdf
 *.xap
