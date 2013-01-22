@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Twilio.TwiML</id>
+    <version>3.2.0</version>
+    <authors>Twilio</authors>
+    <owners>Twilio</owners>
+    <licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>http://github.com/twilio/twilio-csharp</projectUrl>
+    <iconUrl>http://www.twilio.com/packages/company/img/logos_downloadable_round.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Twilio TwiML generator. If using ASP.NET MVC, install Twilio.Mvc instead.</description>
+    <releaseNotes>* 3.2.0 - Adding Queue Verb
+      Adding document comments</releaseNotes>
+    <language>en-US</language>
+    <tags>REST SMS voice telephony phone twilio twiml</tags>
+  </metadata>
+</package>
