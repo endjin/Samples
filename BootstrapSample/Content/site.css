@@ -1,0 +1,180 @@
+﻿/* Globals */
+
+html,
+body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+body {
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+	background: #101010;
+}
+
+/* -----------------------------------------------
+    Extra hidden/visible classes
+----------------------------------------------- */
+
+.visible-narrow-desktop {
+  display: none !important;
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+  .visible-narrow-desktop {
+    display: inherit !important;
+  }
+  .hidden-narrow-desktop {
+    display: none !important;
+  }
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hidden-narrow-desktop {
+    display: inherit !important;
+  }
+  .visible-narrow-desktop {
+    display: none !important;
+  }
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important;
+  }
+  .visible-phone {
+    display: inherit !important;
+  }
+  .hidden-phone {
+    display: none !important;
+  }
+}
+
+/* ----------------------------------------------
+    Page layout 
+---------------------------------------------- */
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by its height */
+    margin: 0 auto -90px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+footer {
+    height: 90px;
+}
+
+footer {
+    padding-top: -90px;
+}
+
+#fullWidthFooterContent {
+	padding: 10px;
+}
+
+#contentBoxOut > h3 {
+	margin-top: 0;
+}
+
+#pageHeader {
+	background: #000060;
+	color: #848484;
+	margin-left: -20px;
+	margin-right: -20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.content {
+	background: #ffffff;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+/* Pushing the callout image left out of the grid */
+#calloutImage {
+	margin-left: -30%;
+	margin-bottom: 20px;
+	max-width: 130%;
+}
+
+#pageBodyContent {
+	margin-bottom: 20px;
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+	/* Little bit of margin on the image on the narrow desktop 
+		to balance the last line.
+	*/
+	#calloutImage {
+		margin-top: 6px;
+	}
+}
+
+@media (max-width: 767px) {
+	/* Restoring the callout image to an "inline" pic on the phone */
+	#calloutImage {
+		margin-left: Inherit !Important;
+		max-width: 100%;
+	}
+
+	#pageBodyContent {
+		margin-bottom: 20px;
+	}
+
+}
+
+
+@media (max-width: 767px)
+{
+	/* Shrinking the fonts on the phone */
+	body {
+		font-size: 75%;
+	}	
+
+	h1 {
+		font-size: 31.5px;
+	}
+
+	h2 {
+		font-size: 24.5px;
+	}
+
+	h3 {
+		font-size: 17.5px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 979px)
+{
+	/* Shrinking the fonts a little bit less on the tablet */
+	body {
+		font-size: 75%;
+	}
+	
+	h1 {
+		font-size: 31.5px;
+	}
+
+	h2 {
+		font-size: 24.5px;
+	}
+
+	h3 {
+		font-size: 17.5px;
+	}
+}
+
