@@ -384,17 +384,17 @@ let evaluate (instruction : Token array) =
     | Exit -> wide_registers.[3] <- 65534us (* We're one less than 65535, as one will get added to the PC *)
     | _ -> raise (ParseError("Instruction not recognized"))
 
-let HexFormat (h : byte[]) =
+let hexFormat (h : byte[]) =
   let sb = System.Text.StringBuilder(h.Length * 2)
-  let rec HexFormat' = function
+  let rec hexFormat' = function
     | _ as currIndex when currIndex = h.Length -> sb.ToString()
     | _ as currIndex when currIndex % 16 = 0 && currIndex > 0 -> 
         sb.AppendFormat("\n" + numericFormatString, h.[currIndex]) |> ignore
-        HexFormat' (currIndex + 1)
+        hexFormat' (currIndex + 1)
     | _ as currIndex ->
         sb.AppendFormat(numericFormatString, h.[currIndex]) |> ignore
-        HexFormat' (currIndex + 1)
-  HexFormat' 0
+        hexFormat' (currIndex + 1)
+  hexFormat' 0
 
 let byteToString (h : byte) =
     let sb = System.Text.StringBuilder(2)
@@ -423,21 +423,26 @@ let tokenToWordOutput (token : Token) =
 let PrintMemory memstr =
     printfn "%s\n" memstr
 
-let executeCurrentInstruction (program : System.String array) =
-    let instruction = program.[int wide_registers.[3]]
-    printfn "%s\n" instruction
+let executeCurrentInstruction (instruction : System.String) =
     instruction |> tokenize |> evaluate
     wide_registers.[3] <- wide_registers.[3] + 1us
 
+let fetchInstruction (program : System.String array) =
+    program.[int wide_registers.[3]]
+
+let rec debugDump instruction =
+    if debug then
+        printfn "%s\n" instruction
+        printfn "R0=%s  R1=%s  R2=%s, WR0=%s, WR1=%s, WR2=%s, PC=%s, FL=%s" (tokenToByteOutput R0) (tokenToByteOutput R1) (tokenToByteOutput R2) (tokenToWordOutput WR0) (tokenToWordOutput WR1) (tokenToWordOutput WR2) (tokenToWordOutput PC) (tokenToByteOutput FL)
+        memory |> hexFormat |> PrintMemory  
 
 let run (program : System.String array) =
     let rec run' = function
     | _ as pc when int pc < program.Length -> 
-        executeCurrentInstruction program
-        if debug then
-            printfn "R0=%s  R1=%s  R2=%s, WR0=%s, WR1=%s, WR2=%s, PC=%s, FL=%s" (tokenToByteOutput R0) (tokenToByteOutput R1) (tokenToByteOutput R2) (tokenToWordOutput WR0) (tokenToWordOutput WR1) (tokenToWordOutput WR2) (tokenToWordOutput PC) (tokenToByteOutput FL)
-            memory |> HexFormat |> PrintMemory  
-        run'(getWord PC)
+        let instruction = program |> fetchInstruction 
+        executeCurrentInstruction instruction        
+        debugDump instruction
+        run'(getWord PC)    
     | _ as pc -> 
         printfn "\nCompleted successfully"
     run'(getWord PC)
