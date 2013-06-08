@@ -2,15 +2,15 @@ module Endjin.Computer
 
 (* THIS IS YOUR PROGRAM *)
 let programInstructionMemory = [| 
-    "load r0 1" ; 
-    "add r0 1" ; 
-    "write 0 r0" ; 
-    "read r1 0" ; 
-    "load r2 4" ; 
-    "compare r0 r2" ; 
-    "jumplt 2" ; 
-    "exit" ; 
-    "load r1 4" ; 
+    "load r0 1" 
+    "add r0 1" 
+    "write 0 r0"
+    "read r1 0" 
+    "load r2 4" 
+    "compare r0 r2"
+    "jumplt 2"
+    "exit"
+    "load r1 4"
     "exit" 
     |]
 
