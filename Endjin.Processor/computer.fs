@@ -20,7 +20,7 @@ let programInstructionMemory = [|
 
 let outputInHex = false
 
-let debug = true
+let debug = false
 
 // Our computer has 10 bytes of memory
 let memory : byte array = Array.zeroCreate 10
@@ -425,7 +425,6 @@ let PrintMemory memstr =
 
 let executeCurrentInstruction (instruction : System.String) =
     instruction |> tokenize |> evaluate
-    wide_registers.[3] <- wide_registers.[3] + 1us
 
 let fetchInstruction (program : System.String array) =
     program.[int wide_registers.[3]]
@@ -440,7 +439,9 @@ let run (program : System.String array) =
     let rec run' = function
     | _ as pc when int pc < program.Length -> 
         let instruction = program |> fetchInstruction 
-        executeCurrentInstruction instruction        
+        executeCurrentInstruction instruction
+        (* Increment the program counter *)      
+        wide_registers.[3] <- wide_registers.[3] + 1us
         debugDump instruction
         run'(getWord PC)    
     | _ as pc -> 
