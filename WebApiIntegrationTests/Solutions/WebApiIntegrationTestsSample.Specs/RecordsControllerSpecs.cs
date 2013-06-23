@@ -23,7 +23,6 @@
 
             var server = new HttpServer(config);
             this.client = new HttpClient(server);
-            
         }
 
         [TestCase]
@@ -46,14 +45,12 @@
 
             var record = new Record { Name = "Mike", Content = "Hello!" };
 
-            var request = HttpRequestMethods.CreateRequest(
-                url, "application/json", HttpMethod.Post, record, new JsonMediaTypeFormatter());
+            var request = HttpRequestMethods.CreateRequest(url, "application/json", HttpMethod.Post, record, new JsonMediaTypeFormatter());
 
             HttpResponseMessage response = this.client.SendAsync(request, new CancellationTokenSource().Token).Result;
 
             Assert.True(response.IsSuccessStatusCode);
             Assert.NotNull(response.Content);
         }
-
     }
 }
