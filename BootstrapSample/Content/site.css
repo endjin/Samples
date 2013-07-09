@@ -104,6 +104,16 @@ footer {
     margin-right: -20px;
 }
 
+.fullWidthContent {
+	background-image: url('./images/background.jpg');
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    color: white;
+}
+
 /* Pushing the callout image left out of the grid */
 #calloutImage {
 	margin-left: -30%;
