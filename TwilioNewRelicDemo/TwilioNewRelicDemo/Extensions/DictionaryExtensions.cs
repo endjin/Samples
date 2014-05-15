@@ -15,7 +15,7 @@ namespace TwilioNewRelicDemo.Extensions
         {
             var voiceRequest = args.Select(kvp => kvp.Value).OfType<VoiceRequest>().FirstOrDefault();
 
-            var parameters = voiceRequest.ToParametersDictionary();
+            var parameters = voiceRequest.ToParametersDictionary("twilioRequest");
 
             var otherParameters = args.Where(arg => !(arg.Value is VoiceRequest));
             foreach (var parameter in otherParameters)
