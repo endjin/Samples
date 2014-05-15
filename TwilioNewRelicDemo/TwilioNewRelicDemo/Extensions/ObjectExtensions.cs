@@ -7,8 +7,6 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
-    using RestSharp.Extensions;
-
     #endregion
 
     public static class ObjectExtensions

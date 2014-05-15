@@ -1,8 +1,13 @@
 ﻿namespace TwilioNewRelicDemo.Specs.Helpers
 {
+    #region Using Directives
+
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
+
+    #endregion
+
 
     public class TestTraceListener : TraceListener
     {

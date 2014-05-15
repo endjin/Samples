@@ -2,7 +2,6 @@
 {
     #region Using Directives
 
-    using System.Collections.Generic;
     using System.Net.Http;
 
     using Twilio.Mvc;
@@ -28,7 +27,7 @@
 
             var response = new TwilioResponse();
             response.Say("Pin code is valid.");
-            response.Redirect(string.Format("/api/Name?pin={0}", pin));
+            response.Redirect(string.Format("/api/User?pin={0}", pin));
 
             return this.TwiMLResponse(response);
         }

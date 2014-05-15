@@ -1,29 +1,29 @@
 namespace TwilioNewRelicDemo.Extensions
 {
+    #region Using Directives
+
     using System.Collections.Generic;
-    using System.Web.Http.Controllers;
+    using System.Linq;
 
     using Twilio.Mvc;
 
+    #endregion
+
     public static class DictionaryExtensions
     {
-        public static Dictionary<string, string> AddHttpActionContextParameters(
-                this Dictionary<string, string> dictionary,
-                HttpActionContext context)
+        public static Dictionary<string, string> ToRequestParameters(this Dictionary<string, object> args)
         {
-            foreach (var actionArgument in context.ActionArguments)
-            {
-                if (actionArgument.Value is VoiceRequest)
-                {
-                    continue;
-                }
+            var voiceRequest = args.Select(kvp => kvp.Value).OfType<VoiceRequest>().FirstOrDefault();
 
-                dictionary.Add(
-                               actionArgument.Key,
-                               actionArgument.Value != null ? actionArgument.Value.ToString() : "null");
+            var parameters = voiceRequest.ToParametersDictionary();
+
+            var otherParameters = args.Where(arg => !(arg.Value is VoiceRequest));
+            foreach (var parameter in otherParameters)
+            {
+                parameters.Add(parameter.Key, parameter.Value != null ? parameter.Value.ToString() : "null");
             }
 
-            return dictionary;
+            return parameters;
         }
     }
 }

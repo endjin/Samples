@@ -17,7 +17,7 @@
         protected const string ValidPin = "123";
         protected const string InvalidPin = "098";
 
-        public when_receiving_a_twilio_request()
+        protected when_receiving_a_twilio_request()
         {
             this.establish_context();
             this.because_of();
@@ -31,7 +31,7 @@
         {
         }
 
-        protected HttpResponseMessage Post(string uri, VoiceRequest request)
+        protected static HttpResponseMessage Post(string uri, VoiceRequest request)
         {
             using (var client = CreateHttpClient())
             {

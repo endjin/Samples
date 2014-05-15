@@ -10,10 +10,14 @@ namespace TwilioNewRelicDemo.Exceptions
 
     public abstract class CustomException : Exception
     {
-        protected CustomException(string message) : base(message)
+        protected CustomException(string message)
+                : base(message)
         {
         }
 
-        public abstract ErrorAction ErrorAction { get; }
+        public abstract ErrorAction ErrorAction
+        {
+            get;
+        }
     }
 }

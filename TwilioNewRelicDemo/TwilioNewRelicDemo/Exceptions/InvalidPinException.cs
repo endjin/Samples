@@ -8,13 +8,17 @@ namespace TwilioNewRelicDemo.Exceptions
 
     public class InvalidPinException : CustomException
     {
-        public InvalidPinException(string pin) : base(ToMessage(pin))
+        public InvalidPinException(string pin)
+                : base(ToMessage(pin))
         {
         }
 
         public override ErrorAction ErrorAction
         {
-            get { return ErrorAction.Ignore; }
+            get
+            {
+                return ErrorAction.Ignore;
+            }
         }
 
         private static string ToMessage(string pin)

@@ -4,14 +4,11 @@
 
     using System.Diagnostics;
     using System.Net.Http;
-    using System.Web.Http;
-    using System.Web.Http.Hosting;
 
     using NUnit.Framework;
 
     using Twilio.Mvc;
 
-    using TwilioNewRelicDemo.Controllers;
     using TwilioNewRelicDemo.Specs.Helpers;
 
     #endregion
@@ -20,7 +17,6 @@
     {
         private VoiceRequest request;
         private HttpResponseMessage response;
-        private AuthenticateController sut;
         private TestTraceListener traceListener;
 
         protected override void establish_context()
@@ -29,14 +25,11 @@
             Trace.Listeners.Add(this.traceListener);
 
             this.request = TestData.CreateTestVoiceRequest(InvalidPin);
-            this.sut = new AuthenticateController() { Request = new HttpRequestMessage() };
-
-            this.sut.Request.Properties.Add(HttpPropertyKeys.HttpConfigurationKey, new HttpConfiguration());
         }
 
         protected override void because_of()
         {
-            this.response = this.Post("http://test/api/authenticate", this.request);
+            this.response = Post("http://test/api/authenticate", this.request);
         }
 
         [Test]

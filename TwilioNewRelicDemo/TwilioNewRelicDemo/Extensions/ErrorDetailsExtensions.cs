@@ -1,6 +1,10 @@
 ﻿namespace TwilioNewRelicDemo.Extensions
 {
+    #region Using Directives
+
     using TwilioNewRelicDemo.Logging;
+
+    #endregion
 
     public static class ErrorDetailsExtensions
     {

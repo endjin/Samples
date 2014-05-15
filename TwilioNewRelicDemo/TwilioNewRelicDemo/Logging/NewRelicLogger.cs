@@ -14,26 +14,21 @@
 
     public class NewRelicLogger
     {
-        public static void LogError(
-                Exception ex,
-                ErrorAction actionTaken,
-                object parameters)
+        public static void LogError(Exception ex, ErrorAction actionTaken, object parameters)
         {
             try
             {
-                var errorDetails = Create(
-                        ex,
-                        ex.Message,
-                        ex.StackTrace,
-                        actionTaken,
-                        parameters);
+                var errorDetails = Create(ex, ex.Message, ex.StackTrace, actionTaken, parameters);
 
                 LogToNewRelic(errorDetails);
             }
             catch (Exception exception)
             {
                 Trace.TraceError(
-                        string.Format("[{0}] Error: Logging to NewRelic Failed. {1}", "NewRelicLogger", exception.Message));
+                        string.Format(
+                                "[{0}] Error: Logging to NewRelic Failed. {1}",
+                                "NewRelicLogger",
+                                exception.Message));
             }
         }
 
@@ -47,30 +42,27 @@
             var args = parameters as Dictionary<string, string> ?? parameters.ToParametersDictionary();
 
             return new ErrorDetails
-            {
-                ActionTaken = actionTaken,
-                Args = args,
-                Error = ex,
-                ErrorMessage = errorMessage,
-                StackTrace = stackTrace,
-                OccurrenceTimeStamp = DateTime.UtcNow
-            };
+                   {
+                           ActionTaken = actionTaken,
+                           Args = args,
+                           Error = ex,
+                           ErrorMessage = errorMessage,
+                           StackTrace = stackTrace,
+                           OccurrenceTimeStamp = DateTime.UtcNow
+                   };
         }
 
         private static void LogToNewRelic(ErrorDetails details)
         {
-            Trace.TraceError(
-                             string.Format(
-                                           "Error: {0}",
-                                           details.Error.Message));
+            Trace.TraceError(string.Format("Error: {0}", details.Error.Message));
 
             var errorData = new Dictionary<string, string>(details.Args)
-            {
-                { "ActionTaken", details.ActionTaken.ToString() },
-                { "OccurrenceTimeStamp", details.OccurrenceTimeStamp.ToString("O") },
-                { "Error", details.ExtractErrorMessage() },
-                { "StackTrace", details.ExtractStackTrace() }
-            };
+                            {
+                                { "ActionTaken", details.ActionTaken.ToString() },
+                                { "OccurrenceTimeStamp", details.OccurrenceTimeStamp.ToString("O") },
+                                { "Error", details.ExtractErrorMessage() },
+                                { "StackTrace", details.ExtractStackTrace() }
+                            };
 
             Trace.TraceInformation("Logging to NewRelic - Error: {0}", details.Error);
 

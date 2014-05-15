@@ -20,8 +20,9 @@
             // Only apply to web api requests than contain a Twilio Voice Request
             var voiceRequest =
                     context.ActionContext.ActionArguments.Select(kvp => kvp.Value)
-                           .OfType<VoiceRequest>()
-                           .FirstOrDefault();
+                            .OfType<VoiceRequest>()
+                            .FirstOrDefault();
+
             if (voiceRequest == null)
             {
                 return;
@@ -30,7 +31,8 @@
             var customException = context.Exception as CustomException;
             var errorAction = customException == null ? ErrorAction.Escalate : customException.ErrorAction;
 
-            var parameters = voiceRequest.ToParametersDictionary("twilioRequest").AddHttpActionContextParameters(context.ActionContext);
+            var parameters = 
+                context.ActionContext.ActionArguments.ToRequestParameters();
 
             NewRelicLogger.LogError(context.Exception, errorAction, parameters);
         }
