@@ -49,12 +49,16 @@
     <Content Include="App\Services\dogService.js" />
     <Content Include="Content\jasmine\jasmine.css" />
     <Content Include="Content\jasmine\jasmine_favicon.png" />
+    <None Include="phantomjs.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\jasmine\boot.js" />
     <Content Include="Scripts\jasmine\jasmine-html.js" />
     <Content Include="Scripts\jasmine\jasmine.js" />
+    <Content Include="Scripts\jasmine\run-jasmine.js" />
     <Content Include="Specs\serviceSpecs.js" />
     <Content Include="Specs\controllerSpecs.js" />
     <Content Include="Specs\SpecRunner.html" />
